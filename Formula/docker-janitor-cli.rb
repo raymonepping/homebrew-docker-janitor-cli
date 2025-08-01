@@ -2,7 +2,7 @@ class DockerJanitorCli < Formula
   desc "🧼 Clean up dangling Docker resources with preview, stats, and markdown logs"
   homepage "https://github.com/raymonepping/docker-janitor-cli"
   url "https://github.com/raymonepping/homebrew-docker-janitor-cli/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "REPLACE_WITH_ACTUAL_SHA256"
+  sha256 "81f0012ea24c2ac9c564e6181a9755543fd2279f0c15e9a10755b4bc8d09607e"
   license "MIT"
   version "1.0.0"
 
