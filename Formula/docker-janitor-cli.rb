@@ -11,7 +11,7 @@ class DockerJanitorCli < Formula
   depends_on "coreutils"
 
   def install
-    bin.install "bin/docker_janitor.sh" => "docker_janitor"
+    bin.install "bin/docker_janitor" => "docker_janitor"
     lib.install Dir["lib/*"]
   end
 
