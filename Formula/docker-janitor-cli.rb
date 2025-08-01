@@ -1,34 +1,39 @@
-class ExportDockerImageCli < Formula
-  desc "Export, audit, and report your Docker Hub images with zero hassle"
-  homepage "https://github.com/raymonepping/export-docker-image-cli"
-  url "https://github.com/raymonepping/homebrew-export-docker-image-cli/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "2ba049446ae309d81afc9c729c3b9f30d48eda543f8ce736c33ec4fcaf897671" # Replace with your tarball’s SHA256
+class DockerJanitorCli < Formula
+  desc "🧼 Clean up dangling Docker resources with preview, stats, and markdown logs"
+  homepage "https://github.com/raymonepping/docker-janitor-cli"
+  url "https://github.com/raymonepping/homebrew-docker-janitor-cli/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "REPLACE_WITH_ACTUAL_SHA256"
   license "MIT"
-  version "1.0.1"
+  version "1.0.0"
 
   depends_on "bash"
   depends_on "jq"
+  depends_on "coreutils"
 
   def install
-    bin.install "bin/export_docker_image" => "export_docker_image"
+    bin.install "bin/docker_janitor.sh" => "docker_janitor"
+    lib.install Dir["lib/*"]
   end
 
   def caveats
     <<~EOS
-      To get started, run:
-        export_docker_image --help
+      🧽 Get started with:
+        docker_janitor --help
 
-      Config is read from:
-        $HOME/.docker-config.env or ./.docker-config.env
-      Sample:
-        DOCKERHUB_REPO=your_dockerhub_username
+      🔍 Features:
+        • --dryrun (default): Show what would be removed
+        • --force: Actually remove images, containers, volumes, etc.
+        • --scope: 'safe' or 'deep' cleanup levels
+        • --stats: Show disk usage delta
+        • --dryrun-summary: Export analysis to timestamped Markdown
+        • --log FILE: Write live cleanup summary
 
-      This CLI exports image metadata (name, tag, size, date) in JSON format.
-      Full docs: https://github.com/raymonepping/export-docker-image-cli
+      📁 Logs are saved to ./logs/ by default (created automatically).
+      📚 Full docs: https://github.com/raymonepping/homebrew-docker-janitor-cli
     EOS
   end
 
   test do
-    assert_match "Usage", shell_output("#{bin}/export_docker_image --help")
+    assert_match "Usage", shell_output("#{bin}/docker_janitor --help")
   end
 end
